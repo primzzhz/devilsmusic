@@ -35,7 +35,6 @@ chat_id = None
     & ~ filters.edited
 )
 @errors
-
 async def playm(client: Client, message_: Message):
     audio = (message_.reply_to_message.audio or message_.reply_to_message.voice) if message_.reply_to_message else None
     chat_id=message_.chat.id
