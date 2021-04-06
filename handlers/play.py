@@ -30,12 +30,12 @@ from helpers.errors import DurationLimitError
 
 chat_id = None
 @Client.on_message(
-    filters.command("playm")
+    filters.command("playthis")
     & filters.group
     & ~ filters.edited
 )
 @errors
-async def playm(client: Client, message_: Message):
+async def playthis(client: Client, message_: Message):
     audio = (message_.reply_to_message.audio or message_.reply_to_message.voice) if message_.reply_to_message else None
     chat_id=message_.chat.id
     res = await message_.reply_text("🔄 Processing...")
@@ -140,16 +140,16 @@ def changeImageSize(maxWidth, maxHeight, image):
     return newImage
  
 @Client.on_message(
-    filters.command("ytt")
+    filters.command("playm")
     & filters.group
     & ~ filters.edited
 )
-async def ytp(client: Client, message_: Message):
+async def playm(client: Client, message_: Message):
     requested_by = message_.from_user.first_name
     chat_id=message_.chat.id
     text = message_.text.split(" ", 1)
     query = text[1]
-    res = await message_.reply_text(f"Searching 🔍🔎🔍🔎 for `{query}` on You Tube")
+    res = await message_.reply_text(f"Searching... `{query}` on @IGRISROBOT")
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
@@ -176,10 +176,10 @@ async def ytp(client: Client, message_: Message):
     res.delete
     m = await client.send_photo(
         chat_id=message_.chat.id,
-        caption=f"Playing `{query}` Via YouTube",
+        caption=f"Add @IGRISMUSIC in group to listen this song `{query}` Via IGRISROBOT",
         photo="final.png",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("watch on Youtube", url=link)]]
+            [[InlineKeyboardButton("Watch on Youtube", url=link)]]
         ),
         parse_mode="markdown",
     )
