@@ -30,12 +30,13 @@ from helpers.errors import DurationLimitError
 
 chat_id = None
 @Client.on_message(
-    filters.command("play")
+    filters.command("playm")
     & filters.group
     & ~ filters.edited
 )
 @errors
-async def play(client: Client, message_: Message):
+@admins_only
+async def playm(client: Client, message_: Message):
     audio = (message_.reply_to_message.audio or message_.reply_to_message.voice) if message_.reply_to_message else None
     chat_id=message_.chat.id
     res = await message_.reply_text("🔄 Processing...")
@@ -84,8 +85,8 @@ async def play(client: Client, message_: Message):
         res.delete
         m = await client.send_photo(
         chat_id=message_.chat.id,
-        photo="https://telegra.ph/file/fe07b15733ed56f103cb4.jpg",
-        caption=f"Playing Your song Via Devil music bot.",
+        photo="https://telegra.ph/file/5113434dcbd3e627a8b5d.jpg",
+        caption=f"Don't Forget to add @IGRISMUSIC in group to listen your song.",
          ) 
         tgcalls.pytgcalls.join_group_call(message_.chat.id, file_path)
 
@@ -130,53 +131,6 @@ async def deezer(client: Client, message_: Message):
         caption=f"Playing [{title}]({url}) Via Deezer."
     ) 
     os.remove("final.png")
-# Jiosaavn--------------------------------------------------------------------------------------
-@Client.on_message(
-    filters.command("saavn")
-    & filters.group
-    & ~ filters.edited
-)
-async def jiosaavn(client: Client, message_: Message):
-    requested_by = message_.from_user.first_name
-    chat_id=message_.chat.id
-    text = message_.text.split(" ", 1)
-    query = text[1]
-    res = await message_.reply_text(f"Searching 🔍🔎🔍🔎 for `{query}` on jio saavn")
-    try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                f"https://jiosaavnapi.bhadoo.uk/result/?query={query}"
-            ) as resp:
-                r = json.loads(await resp.text())
-        sname = r[0]["song"]
-        slink = r[0]["media_url"]
-        ssingers = r[0]["singers"]
-        sthumb = r[0]["image"]
-        sduration = int(r[0]["duration"])
-    except Exception as e:
-        await res.edit(
-            "Found Literally Nothing!, You Should Work On Your English."
-        )
-        print(str(e))
-        is_playing = False
-        return
-    file_path= await convert(wget.download(slink))
-    if message_.chat.id in tgcalls.pytgcalls.active_calls:
-        position = sira.add(message_.chat.id, file_path)
-        await res.edit_text(f"#️⃣ Queued at position {position}.")
-    else:
-        await res.edit_text("▶️ Playing...")
-        tgcalls.pytgcalls.join_group_call(message_.chat.id, file_path)
-    await res.edit("Processing Thumbnail.")
-    await generate_cover_square(requested_by, sname, ssingers, sduration, sthumb)
-    await res.delete()
-    m = await client.send_photo(
-        chat_id=message_.chat.id,
-        caption=f"Playing {sname} Via Jiosaavn",
-        photo="final.png",
-    )
-    os.remove("final.png")
-
 
 def changeImageSize(maxWidth, maxHeight, image):
     widthRatio = maxWidth / image.size[0]
@@ -206,7 +160,7 @@ async def ytp(client: Client, message_: Message):
         views = results[0]["views"]
     except Exception as e:
         await res.edit(
-            "Found Literally Nothing!, You Should Work On Your English."
+            "Found Literally Nothing."
         )
         is_playing = False
         print(str(e))
