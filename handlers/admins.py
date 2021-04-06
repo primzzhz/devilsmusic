@@ -32,7 +32,7 @@ async def resume(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.command(["stop", "end"])
+    filters.command(["stopm", "end"])
     & filters.group
     & ~ filters.edited
 )
