@@ -149,7 +149,7 @@ async def playm(client: Client, message_: Message):
     chat_id=message_.chat.id
     text = message_.text.split(" ", 1)
     query = text[1]
-    res = await message_.reply_text(f"Searching... `{query}` on @IGRISROBOT")
+    res = await message_.reply_text(f"Searching... `{query}` on @IGRISXROBOT")
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
@@ -176,7 +176,7 @@ async def playm(client: Client, message_: Message):
     res.delete
     m = await client.send_photo(
         chat_id=message_.chat.id,
-        caption=f"Add @IGRISMUSIC in group to listen this song `{query}` Via IGRISROBOT",
+        caption=f"Add @IGRISMUSIC in group to listen this song `{query}` Via IGRISXROBOT",
         photo="final.png",
         reply_markup=InlineKeyboardMarkup(
             [[InlineKeyboardButton("Watch on Youtube", url=link)]]
