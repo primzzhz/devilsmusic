@@ -17,7 +17,7 @@ bs4
 motor
 envparse 
 html2text
-telethon=1.16.4
+telethon==1.16.4
 beautifulsoup4
 spamwatch
 redis
