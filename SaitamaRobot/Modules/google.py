@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import urllib
-from SaitamaRobot import telethn as tbot
+from SaitamaRobot.igriss import telethn as tbot
 import glob
 import io
 import os
@@ -21,7 +21,7 @@ from telethon.tl import functions
 from telethon.tl import types
 from telethon.tl.types import *
 
-from SaitamaRobot import *
+from SaitamaRobot.igriss import *
 
 from SaitamaRobot.events import register
 
