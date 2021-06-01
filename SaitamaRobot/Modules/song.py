@@ -5,7 +5,7 @@ import aiohttp
 import youtube_dl
 
 from pyrogram import filters
-from SaitamaRobot import pgram
+from SaitamaRobot.igriss import pgram
 from youtube_search import YoutubeSearch
 
 
