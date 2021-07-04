@@ -13,4 +13,3 @@ python-arq
 Pyrogram
 ffmpeg
 pytgcalls
-tgcalls
