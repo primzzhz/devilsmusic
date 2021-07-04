@@ -85,7 +85,7 @@ async def admincache(client, message: Message):
 @Client.on_message(filters.command("restartmusic") & filters.user(SUDO_USERS))
 async def restart(c: Client, m: Message):
     await m.reply_text("Restarting...")
-    args = [sys.executable, "-c", "main.py"]
+    args = [sys.executable, "main.py"]
     os.execl(sys.executable, *args)
 
 @Client.on_message(
