@@ -2,10 +2,10 @@ from pyrogram import Client
 from pyrogram import filters
 from pyrogram.errors import UserAlreadyParticipant
 import asyncio
-from devilsmusic.helpers.decorators import authorized_users_only
-from devilsmusic.helpers.decorators import errors
-from devilsmusic.services.callsmusic import client as USER
-from devilsmusic.config import SUDO_USERS
+from helpers.decorators import authorized_users_only
+from helpers.decorators import errors
+from services.callsmusic import client as USER
+from config import SUDO_USERS
 
 @Client.on_message(filters.command(["joinvc"]) & ~filters.private & ~filters.bot)
 @authorized_users_only
