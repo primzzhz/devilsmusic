@@ -182,7 +182,7 @@ async def playm(client: Client, message_: Message):
         photo="final.png",
         reply_markup=InlineKeyboardMarkup(
             [
-                 [     InlineKeyboardButton("Watch on Youtube", url=link)]],
+                 [     InlineKeyboardButton("Watch on Youtube", url=link)]]
         ),
         parse_mode="markdown",
     )
