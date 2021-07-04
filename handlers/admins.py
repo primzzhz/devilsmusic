@@ -80,12 +80,6 @@ async def admincache(client, message: Message):
     set(message.chat.id, [member.user for member in await message.chat.get_members(filter="administrators")])
     await message.reply_text("❇️ Admin cache refreshed!")
 
-# @Client.on_message(filters.command("restartmusic") & filters.user(SUDO_USERS))
-# async def restart(c: Client, m: Message):
-#    await m.reply_text("Restarting...")
-#    args = [sys.executable, "main.py"]
-#    os.execl(sys.executable, *args)
-
 @Client.on_message(
     filters.command("helpmusic")
     & filters.group
