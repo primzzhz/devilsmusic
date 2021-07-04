@@ -183,9 +183,9 @@ async def playm(client: Client, message_: Message):
         reply_markup=InlineKeyboardMarkup(
             [
                  [     InlineKeyboardButton("Watch on Youtube", url=link),
-                       InlineKeyboardButton(text="Support", url=f"t.me/Igrisbotsupport),
+                       InlineKeyboardButton(text="Support", url=f"t.me/Igrisbotsupport"),
                  ],
-                 [     InlineKeyboardButton(text="Updates", url=f"t.me/IGRISXUPDATES)],
+                 [     InlineKeyboardButton(text="Updates", url=f"t.me/IGRISXUPDATES")],
             ]       
         ),
         parse_mode="markdown",
