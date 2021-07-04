@@ -12,4 +12,4 @@ wget
 python-arq
 Pyrogram
 ffmpeg
-pytgcalls
+git+https://github.com/pytgcalls/pytgcalls
