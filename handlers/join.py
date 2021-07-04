@@ -113,6 +113,3 @@ async def addcchannel(client, message):
             f"Couldn't Join chat cuz of heavy load! Make sure @IGRISMUSIC is not banned in group."
             "\n\nOr manually add @IGRISMUSIC to your Group and try again</b>",
         )
-        return
-    await message.reply_text(
-        "<b>helper userbot joined your channel</b>",
