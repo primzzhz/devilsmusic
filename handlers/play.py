@@ -181,7 +181,12 @@ async def playm(client: Client, message_: Message):
         caption=f"Add @IGRISMUSIC in group to listen this song `{query}` Via IGRISXROBOT",
         photo="final.png",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("Watch on Youtube", url=link)]]
+            [
+                 [     InlineKeyboardButton("Watch on Youtube", url=link),
+                       InlineKeyboardButton(text="Support", url=f"t.me/Igrisbotsupport),
+                 ],
+                 [     InlineKeyboardButton(text="Updates", url=f"t.me/IGRISXUPDATES)],
+            ]       
         ),
         parse_mode="markdown",
     )
