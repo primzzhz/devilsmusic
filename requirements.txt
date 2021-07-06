@@ -6,10 +6,9 @@ OpenCC
 Pillow
 requests
 youtube_search
-aiohttp
+aiohttp[speedups]
 aiofiles
 wget
 python-arq
-Pyrogram
-ffmpeg
 git+https://github.com/pytgcalls/pytgcalls
+git+https://github.com/pyrogram/pyrogram
