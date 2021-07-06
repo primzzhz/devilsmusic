@@ -1,4 +1,4 @@
-git+https://github.com/pyrogram/pyrogram
+#git+https://github.com/pyrogram/pyrogram
 TgCrypto
 git+https://github.com/pytgcalls/pytgcalls
 python-dotenv
@@ -12,3 +12,4 @@ aiohttp
 aiofiles
 wget
 python-arq
+Pyrogram 
