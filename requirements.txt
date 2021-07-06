@@ -12,3 +12,4 @@ wget
 python-arq
 git+https://github.com/pytgcalls/pytgcalls
 git+https://github.com/pyrogram/pyrogram
+ffmpeg
