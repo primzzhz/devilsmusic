@@ -30,12 +30,12 @@ from helpers.errors import DurationLimitError
 
 chat_id = None
 @Client.on_message(
-    filters.command("p")
+    filters.command("tg")
     & filters.group
     & ~ filters.edited
 )
 @errors
-async def p(client: Client, message_: Message):
+async def playthis(client: Client, message_: Message):
     audio = (message_.reply_to_message.audio or message_.reply_to_message.voice) if message_.reply_to_message else None
     chat_id=message_.chat.id
     res = await message_.reply_text("🔄 Processing...")
@@ -100,7 +100,7 @@ async def deezer(client: Client, message_: Message):
     queryy = text[1]
     res = await message_.reply_text(f"Searching 🔍🔎🔍🔎 for `{queryy}` on deezer")
     try:
-        ARQ_API = "WBEHZZ-VEPXPP-KBGKCJ-WILPNE-ARQ"
+        ARQ_API = "PYRPEW-WQMVKL-POUIBI-NLKWCK-ARQ"
         ARQ_API_URL = "https://thearq.tech"
         arq = ARQ(ARQ_API_URL, ARQ_API)
         r = await arq.deezer(query=queryy, limit=1)
@@ -142,7 +142,7 @@ def changeImageSize(maxWidth, maxHeight, image):
     return newImage
  
 @Client.on_message(
-    filters.command("playm")
+    filters.command("p")
     & filters.group
     & ~ filters.edited
 )
@@ -169,16 +169,16 @@ async def playm(client: Client, message_: Message):
     file_path = await convert(download(link))
     if message_.chat.id in tgcalls.pytgcalls.active_calls:
         position = sira.add(message_.chat.id, file_path)
-        await res.edit_text(f"#️⃣ Queued at position {position}.")
+        await res.edit_text(f"#️⃣ Posisi ke {position}.")
     else:
-        await res.edit_text("▶️ Playing...")
+        await res.edit_text("▶️ Diputar...")
         tgcalls.pytgcalls.join_group_call(message_.chat.id, file_path)
     await res.edit("Processing Thumbnail.")
     await generate_cover(requested_by, title, views, duration, thumbnail)
     res.delete
     m = await client.send_photo(
         chat_id=message_.chat.id,
-        caption=f"Add @IGRISMUSIC in group to listen this song `{query}` Via IGRISXROBOT",
+        caption=f"Add @Llogvbiu in group to listen this song `{query}` Via Fu Hua Bot Music",
         photo="final.png",
         reply_markup=InlineKeyboardMarkup(
             [
@@ -196,7 +196,7 @@ async def generate_cover_square(requested_by, title, artist, duration, thumbnail
                 await f.write(await resp.read())
                 await f.close()
     image1 = Image.open("./background.png")
-    image2 = Image.open("etc/IGRIS.png")
+    image2 = Image.open("etc/FuHua.png")
     image3 = changeImageSize(600, 500, image1)
     image4 = changeImageSize(600, 500, image2)
     image5 = image3.convert("RGBA")
