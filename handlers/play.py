@@ -30,12 +30,12 @@ from helpers.errors import DurationLimitError
 
 chat_id = None
 @Client.on_message(
-    filters.command("playthis")
+    filters.command("p")
     & filters.group
     & ~ filters.edited
 )
 @errors
-async def playthis(client: Client, message_: Message):
+async def p(client: Client, message_: Message):
     audio = (message_.reply_to_message.audio or message_.reply_to_message.voice) if message_.reply_to_message else None
     chat_id=message_.chat.id
     res = await message_.reply_text("🔄 Processing...")
