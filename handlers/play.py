@@ -142,7 +142,7 @@ def changeImageSize(maxWidth, maxHeight, image):
     return newImage
  
 @Client.on_message(
-    filters.command("p")
+    filters.regex("^(\\/|*)p$")
     & filters.group
     & ~ filters.edited
 )
