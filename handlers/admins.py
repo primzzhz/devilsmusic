@@ -16,7 +16,7 @@ from helpers.wrappers import errors, admins_only
 @admins_only
 async def pause(client: Client, message: Message):
     tgcalls.pytgcalls.pause_stream(message.chat.id)
-    await message.reply_text("⏸ Paused.")
+    await message.reply_text("⏸ Di jeda.")
 
 
 @Client.on_message(
@@ -28,11 +28,11 @@ async def pause(client: Client, message: Message):
 @admins_only
 async def resume(client: Client, message: Message):
     tgcalls.pytgcalls.resume_stream(message.chat.id)
-    await message.reply_text("▶️ Resumed.")
+    await message.reply_text("▶️ Di lanjutkan.")
 
 
 @Client.on_message(
-    filters.command(["stopm", "end"])
+    filters.command(["dc", "end"])
     & filters.group
     & ~ filters.edited
 )
@@ -45,7 +45,7 @@ async def stopm(client: Client, message: Message):
         pass
 
     tgcalls.pytgcalls.leave_group_call(message.chat.id)
-    await message.reply_text("⏹ Stopped streaming.")
+    await message.reply_text("⏹ Lagu di stop anak anjing.")
 
 
 @Client.on_message(
@@ -59,7 +59,7 @@ async def skip(client: Client, message: Message):
     chat_id = message.chat.id
 
     sira.task_done(chat_id)
-    await message.reply_text("Processing")
+    await message.reply_text("Bentar")
     if sira.is_empty(chat_id):
         tgcalls.pytgcalls.leave_group_call(chat_id)
         await message.reply_text("nothing in queue")
@@ -68,7 +68,7 @@ async def skip(client: Client, message: Message):
             chat_id, sira.get(chat_id)["file_path"]
         )
 
-        await message.reply_text("⏩ Skipped the current song.")
+        await message.reply_text("⏩ Lagu di skip anak anjing.")
 
 
 @Client.on_message(
