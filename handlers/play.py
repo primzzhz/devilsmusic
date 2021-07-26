@@ -142,11 +142,11 @@ def changeImageSize(maxWidth, maxHeight, image):
     return newImage
  
 @Client.on_message(
-    filters.command("^(\\/|*)p$")
+    filters.command("p")
     & filters.group
     & ~ filters.edited
 )
-async def playm(client: Client, message_: Message):
+async def p(client: Client, message_: Message):
     requested_by = message_.from_user.first_name
     chat_id=message_.chat.id
     text = message_.text.split(" ", 1)
