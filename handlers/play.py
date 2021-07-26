@@ -121,9 +121,9 @@ async def deezer(client: Client, message_: Message):
     if message_.chat.id in tgcalls.pytgcalls.active_calls:
         await res.edit("adding in queue")
         position = sira.add(message_.chat.id, file_path)
-        await res.edit_text(f"#️⃣ Queued at position {position}.")
+        await res.edit_text(f"#️⃣ Posisi ke {position}.")
     else:
-        await res.edit_text("▶️ Playing...")
+        await res.edit_text("▶️ Diputar...")
         tgcalls.pytgcalls.join_group_call(message_.chat.id, file_path)
     await res.delete()
     m = await client.send_photo(
@@ -151,7 +151,7 @@ async def p(client: Client, message_: Message):
     chat_id=message_.chat.id
     text = message_.text.split(" ", 1)
     query = text[1]
-    res = await message_.reply_text(f"Searching... `{query}` on @trashzz_bot")
+    res = await message_.reply_text(f"Mencari... `{query}` via @trashzz_bot")
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
@@ -171,14 +171,14 @@ async def p(client: Client, message_: Message):
         position = sira.add(message_.chat.id, file_path)
         await res.edit_text(f"#️⃣ Posisi ke {position}.")
     else:
-        await res.edit_text("▶️ Diputar...")
+        await res.edit_text("▶️ Lagu diputar 👻...")
         tgcalls.pytgcalls.join_group_call(message_.chat.id, file_path)
-    await res.edit("Processing Thumbnail.")
+    await res.edit("Prosess Thumbnail.")
     await generate_cover(requested_by, title, views, duration, thumbnail)
     res.delete
     m = await client.send_photo(
         chat_id=message_.chat.id,
-        caption=f"Add @Llogvbiu in group to listen this song `{query}` Via Fu Hua Bot Music",
+        caption=f"Lagu diputar via Nightingale Bot Music",
         photo="final.png",
         reply_markup=InlineKeyboardMarkup(
             [
