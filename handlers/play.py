@@ -178,11 +178,12 @@ async def p(client: Client, message_: Message):
     res.delete
     m = await client.send_photo(
         chat_id=message_.chat.id,
-        caption=f"Lagu diputar via Nightingale Bot Music",
+        caption=f"Lagu diputar via Nightingale",
         photo="final.png",
         reply_markup=InlineKeyboardMarkup(
             [
-                 [     InlineKeyboardButton("Watch on Youtube", url=link)]]
+                 [     InlineKeyboardButton("♡ Support ♡", https://t.me/wibuempireindo)]]
+                 [     InlineKeyboardButton("♡ Support ♡", https://t.me/wibuisekaiworld)]]
         ),
         parse_mode="markdown",
     )
