@@ -182,7 +182,7 @@ async def p(client: Client, message_: Message):
         photo="final.png",
         reply_markup=InlineKeyboardMarkup(
             [
-                 [     InlineKeyboardButton("* Support *", url=https://wibuempireindo)]]
+                 [     InlineKeyboardButton("* Support *", url=link)]]
         ),
         parse_mode="markdown",
     )
